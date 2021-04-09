@@ -1,0 +1,37 @@
+package com.prueba.imatia.model;
+
+import java.util.Date;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+public class EstadoPedido {
+
+	@Id
+	private Integer id;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "pedido", referencedColumnName = "id")
+	private Integer idPedido;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "estado", referencedColumnName = "id")
+	private Integer idEstado;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fechaCambioEstado;
+	
+}

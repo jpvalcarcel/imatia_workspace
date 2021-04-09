@@ -1,0 +1,24 @@
+package com.prueba.imatia.model;
+
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class Pedido {
+	@Id
+	private Integer id;
+
+	 @OneToMany(mappedBy="EstadoPedido")
+	 private Set<EstadoPedido> estadoPedidos;
+	
+}
